@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--记住我功能相关,CookieRememerMeManager需要配置加密相关-->
+    <bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="604800"/>
+        <property name="name" value="rememberMe"/>
+    </bean>
+    <bean id="cookieRememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="simpleCookie"/>
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+    </bean>
+
+    <!--缓存管理器
+    <bean id="ehCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehCache.xml"/>
+    </bean>-->
+
+    <!--配置自己创建的ShiroRealm类,这个realm必须是Realm类型或子类-->
+    <bean id="shiroRealm" class="com.iw.tms.shiro.ShiroRealm"/>
+
+    <!--配置安全管理器,安全管理器需要cookieRememberMeManager,encCacheManager,Realm 三种类型的属性-->
+    <bean id="defaultWebSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="rememberMeManager" ref="cookieRememberMeManager"/>
+
+        <property name="realm" ref="shiroRealm"/>
+    </bean>
+
+    <!--配置生命周期,自动调用shiro 在spring 容器中的init,destory等方法-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--配置ShiroFilterFactoryBean,这个id必须和web.xml配置文件中的filtername相同-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="defaultWebSecurityManager"/>
+        <!--配置登陆的url-->
+        <property name="loginUrl" value="/"/>
+        <!--配置登陆后的url-->
+        <property name="successUrl" value="/home"/>
+        <!--配置没有权限的url-->
+        <property name="unauthorizedUrl" value="/401"/>
+    </bean>
+
+    <!--配置ShrioFilter-->
+    <bean id="customerFilterChainDefinition" class="com.iw.tms.shiro.CustomerFilterChainDefinition">
+        <property name="shiroFilter" ref="shiroFilter"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /favicon.ico = anon
+                /static/** = anon
+                /logout = logout
+            </value>
+        </property>
+    </bean>
+
+
+</beans>

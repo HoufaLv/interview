@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [01/May/2018:17:12:39 +0800] "GET /testSales.jsp HTTP/1.1" 200 85 http-bio-8082-exec-1 735
+0:0:0:0:0:0:0:1 - - [01/May/2018:17:12:39 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8082-exec-2 11
