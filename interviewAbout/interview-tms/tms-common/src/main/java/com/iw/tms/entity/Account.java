@@ -7,6 +7,11 @@ import java.util.Date;
  * @author 
  */
 public class Account implements Serializable {
+
+    public static final String STATE_NORMAL = "正常";
+    public static final String STATE_DISABLE = "禁用";
+    public static final String STATE_LOCKED = "锁定";
+
     private Integer id;
 
     /**

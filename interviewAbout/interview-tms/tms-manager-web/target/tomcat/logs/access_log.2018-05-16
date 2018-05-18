@@ -1,9 +1,0 @@
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET / HTTP/1.1" 200 3004 http-bio-8081-exec-1 1667
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/dist/css/font-awesome.min.css HTTP/1.1" 200 31004 http-bio-8081-exec-3 116
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/plugins/iCheck/square/blue.css HTTP/1.1" 200 1672 http-bio-8081-exec-5 112
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/dist/css/AdminLTE.min.css HTTP/1.1" 200 90396 http-bio-8081-exec-4 164
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 121205 http-bio-8081-exec-2 189
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/plugins/iCheck/icheck.min.js HTTP/1.1" 200 4526 http-bio-8081-exec-9 78
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 37051 http-bio-8081-exec-7 212
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:41 +0800] "GET /static/plugins/jQuery/jquery-2.2.3.min.js HTTP/1.1" 200 85663 http-bio-8081-exec-6 238
-0:0:0:0:0:0:0:1 - - [16/May/2018:23:40:44 +0800] "GET /static/plugins/iCheck/square/blue.png HTTP/1.1" 200 2185 http-bio-8081-exec-10 99

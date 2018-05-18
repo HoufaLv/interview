@@ -1,0 +1,15 @@
+com\iw\tms\mapper\TicketOutRecordMapper.class
+com\iw\tms\mapper\PermissionMapper.class
+com\iw\tms\mapper\AccountLoginLogMapper.class
+com\iw\tms\service\impl\AccountServiceImpl.class
+com\iw\tms\mapper\TicketStoreMapper.class
+com\iw\tms\mapper\AccountRolesMapper.class
+com\iw\tms\mapper\StoreAccountMapper.class
+com\iw\tms\mapper\TicketMapper.class
+com\iw\tms\mapper\AccountMapper.class
+com\iw\tms\mapper\RolesPermissionMapper.class
+com\iw\tms\mapper\CustomerMapper.class
+com\iw\tms\mapper\StoreLoginLogMapper.class
+com\iw\tms\mapper\TicketOrderMapper.class
+com\iw\tms\mapper\TicketInRecordMapper.class
+com\iw\tms\mapper\RolesMapper.class

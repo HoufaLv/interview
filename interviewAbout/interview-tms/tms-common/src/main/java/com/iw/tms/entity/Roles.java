@@ -30,7 +30,6 @@ public class Roles implements Serializable {
     private Date updateTime;
 
     private static final long serialVersionUID = 1L;
-
     public Integer getId() {
         return id;
     }

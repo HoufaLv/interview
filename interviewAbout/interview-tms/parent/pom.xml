@@ -93,7 +93,11 @@
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring-version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
             <!--使用 jackson 来传递 json 数据-->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

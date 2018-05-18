@@ -62,6 +62,7 @@ public class TicketStore implements Serializable {
     private Integer storeAccountId;
 
     private static final long serialVersionUID = 1L;
+
     public Integer getId() {
         return id;
     }
