@@ -12,9 +12,8 @@
             <li class="header">系统功能</li>
             <li class="${param.menu == 'ticket_store' ? 'active' : ''}"><a href="/ticketstore"><i class="fa fa-shopping-bag"></i> <span>售票点管理</span></a></li>
             <li class="header">系统管理</li>
-            <shiro:hasPermission name="account:query">
                 <li class="${param.menu == 'manage_account' ? 'active' : ''}"><a href="/manage/account"><i class="fa fa-circle-o"></i> <span>账号管理</span></a></li>
-            </shiro:hasPermission>
+
             <li class="${param.menu == 'manage_roles' ? 'active' : ''}"><a href="/manage/roles"><i class="fa fa-circle-o"></i> <span>角色管理</span></a></li>
             <li class="${param.menu == 'manage_permission' ? 'active' : ''}"><a href="/manage/permission"><i class="fa fa-circle-o"></i> <span>权限管理</span></a></li>
 

@@ -25,7 +25,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="/static/dist/img/default-avatar.png" class="user-image" alt="User Image">
-                        <span class="hidden-xs"><shiro:principal property="accountName"/></span>
+                        <span class="hidden-xs"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -33,7 +33,7 @@
                             <img src="/static/dist/img/default-avatar.png" class="img-circle" alt="User Image">
 
                             <p>
-                                <shiro:principal property="accountName"/>
+
                                 <small>海外事业部</small>
                             </p>
                         </li>

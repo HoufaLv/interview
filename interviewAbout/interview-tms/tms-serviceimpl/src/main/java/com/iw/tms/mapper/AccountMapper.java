@@ -3,6 +3,8 @@ package com.iw.tms.mapper;
 import com.iw.tms.entity.Account;
 import com.iw.tms.entity.AccountExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 public interface AccountMapper {
