@@ -105,7 +105,7 @@
     values (#{id,jdbcType=INTEGER}, #{rolesName,jdbcType=VARCHAR}, #{rolesCode,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.iw.tms.entity.Roles">
+  <insert id="insertSelective" parameterType="com.iw.tms.entity.Roles" useGeneratedKeys="true" keyProperty="id">
     insert into roles
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

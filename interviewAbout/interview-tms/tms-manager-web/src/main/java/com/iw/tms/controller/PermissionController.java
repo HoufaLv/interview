@@ -23,6 +23,9 @@ public class PermissionController {
     // TODO: 2018/5/22 0022 完成前端展示树形权限列表功能
     // TODO: 2018/5/22 0022 完成根据权限类型查找所有符合权限类型的权限
     // TODO: 2018/5/22 0022 完成新增权限
+    // TODO: 2018/5/22 0022 完成权限合法判断
+    // TODO: 2018/5/22 0022 解决前端trid.js插件显示BUG,将查询结果集过滤排序
+
 
     @Autowired
     private RolesPermissionService rolesPermissionService;

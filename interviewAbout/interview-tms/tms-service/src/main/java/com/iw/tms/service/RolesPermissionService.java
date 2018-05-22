@@ -1,6 +1,7 @@
 package com.iw.tms.service;
 
 import com.iw.tms.entity.Permission;
+import com.iw.tms.entity.Roles;
 
 import java.util.List;
 
@@ -23,4 +24,11 @@ public interface RolesPermissionService {
      * @return
      */
     List<Permission> listPermission();
+
+    /**
+     * 添加角色
+     * @param roles
+     * @param permissionId
+     */
+    void addRole(Roles roles, Integer[] permissionId);
 }
