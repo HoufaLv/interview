@@ -11,5 +11,6 @@ com\iw\tms\mapper\RolesPermissionMapper.class
 com\iw\tms\mapper\CustomerMapper.class
 com\iw\tms\mapper\StoreLoginLogMapper.class
 com\iw\tms\mapper\TicketOrderMapper.class
+com\iw\tms\service\impl\PermissionServiceIMpl.class
 com\iw\tms\mapper\TicketInRecordMapper.class
 com\iw\tms\mapper\RolesMapper.class

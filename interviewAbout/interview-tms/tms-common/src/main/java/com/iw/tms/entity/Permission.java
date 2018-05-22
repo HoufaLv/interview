@@ -7,6 +7,10 @@ import java.util.Date;
  * @author 
  */
 public class Permission implements Serializable {
+
+    public static final String  MENU_TYPE = "菜单";
+    public static final String  BUTTON_TYPE = "按钮";
+
     private Integer id;
 
     /**

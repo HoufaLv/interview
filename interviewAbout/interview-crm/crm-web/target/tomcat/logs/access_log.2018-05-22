@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [22/May/2018:22:39:50 +0800] "GET / HTTP/1.1" 200 3004 http-bio-9090-exec-1 1181
+0:0:0:0:0:0:0:1 - - [22/May/2018:22:39:50 +0800] "GET /static/plugins/iCheck/square/blue.css HTTP/1.1" 200 1672 http-bio-9090-exec-7 9
+0:0:0:0:0:0:0:1 - - [22/May/2018:22:39:50 +0800] "GET /static/plugins/iCheck/icheck.min.js HTTP/1.1" 200 4526 http-bio-9090-exec-4 16
+0:0:0:0:0:0:0:1 - - [22/May/2018:22:39:50 +0800] "GET /static/plugins/iCheck/square/blue.png HTTP/1.1" 200 2185 http-bio-9090-exec-9 3

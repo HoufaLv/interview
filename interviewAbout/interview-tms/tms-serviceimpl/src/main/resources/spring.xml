@@ -12,6 +12,7 @@
     <!--扫描properties 文件-->
     <context:property-placeholder location="classpath:config.properties"/>
 
+    <!--扫描mapper java 接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.iw.tms.mapper"/>
     </bean>
