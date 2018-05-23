@@ -31,4 +31,17 @@ public interface RolesPermissionService {
      * @param permissionId
      */
     void addRole(Roles roles, Integer[] permissionId);
+
+    /**
+     * 删除权限
+     * @param id
+     */
+    void delPermission(Integer id);
+
+    /**
+     * 查询所有角色信息,角色信息内部封装了一个List<Permission>
+     * @return
+     */
+    List<Roles> selectRolesWithPermission();
+
 }

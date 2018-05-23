@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>tms 角色管理</title>
-    <%@include file="../../include/css.jsp"%>
+    <%@include file="../../include/css.jsp" %>
 </head>
 <body class="hold-transition skin-purple-light sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
-    <%@include file="../../include/navhead.jsp"%>
+    <%@include file="../../include/navhead.jsp" %>
 
     <!-- =============================================== -->
 
@@ -45,26 +45,16 @@
                 <div class="box-body">
                     <table class="table tree">
                         <tbody>
-                        <tr class="bg-blue-active">
-                            <td>角色名称：<strong>超级管理员</strong></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa fa-circle"></i> 权限查询
-                                <i class="fa fa-circle"></i> 新增权限
-                                <i class="fa fa-circle"></i> 修改权限
-                                <i class="fa fa-circle"></i> 删除权限
-                            </td>
-                        </tr>
-                        <tr class="bg-blue-active">
-                            <td>角色名称：<strong>管理员</strong></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa fa-circle"></i> 权限查询
-                                <i class="fa fa-circle"></i> 新增权限
-                            </td>
-                        </tr>
+                        <%--一层循环遍历rolesList--%>
+                        <c:forEach items="${rolesList}" var="role">
+                            <tr class="bg-blue-active">
+                                <td>角色名称：<strong>${role.rolesName}</strong></td>
+                            </tr>
+                            <c:forEach items="${role.permissionList}" var="permission">
+                                <td class="fa fa-circle">${permission.permissionName}</td>
+                            </c:forEach>
+                        </c:forEach>
+
                         </tbody>
                     </table>
                 </div>
@@ -76,6 +66,6 @@
 </div>
 <!-- ./wrapper -->
 
-<%@include file="../../include/js.jsp"%>
+<%@include file="../../include/js.jsp" %>
 </body>
 </html>

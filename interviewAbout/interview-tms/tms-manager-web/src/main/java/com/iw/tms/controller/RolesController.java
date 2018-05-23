@@ -22,15 +22,23 @@ public class RolesController {
     // TODO: 2018/5/22 0022 完成角色页面跳转 
     // TODO: 2018/5/22 0022 完成添加角色页面权限树形结构显示
 
+    // TODO: 2018/5/23 0023 完成Roles对象中Permission对象的封装
+    // TODO: 2018/5/23 0023 完成rolesMapper.xml文件中查询所有角色的一对多关系的封装
+    // TODO: 2018/5/23 0023 完成角色首页数据处理
+
     @Autowired
     private RolesPermissionService rolesPermissionService;
 
     /**
      * 跳转到角色首页
+     * 查出所有角色信息和对应的权限信息,传到home页面去
      * @return
      */
     @GetMapping
-    public String home(){
+    public String home(Model model){
+        List<Roles> rolesList = rolesPermissionService.selectRolesWithPermission();
+
+        model.addAttribute("rolesList",rolesList);
         return "manage/role/home";
     }
 

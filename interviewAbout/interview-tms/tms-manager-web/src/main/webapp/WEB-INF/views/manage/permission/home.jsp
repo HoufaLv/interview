@@ -86,7 +86,7 @@
                                         <td>${permission.permissionType}</td>
                                         <td>
                                             <a href="/manage/permission/${permission.id}/update">修改</a>
-                                            <a href="javascript:;" rel="${permission.id}">删除</a>
+                                            <a class="delLink" href="javascript:;" rel="${permission.id}">删除</a>
                                         </td>
                                     </tr>
                                 </c:when>
@@ -98,7 +98,7 @@
                                         <td>${permission.permissionType}</td>
                                         <td>
                                             <a href="/manage/permission/${permission.id}/update">修改</a>
-                                            <a href="javascript:;" rel="${permission.id}">删除</a>
+                                            <a class="delLink" href="javascript:;" rel="${permission.id}">删除</a>
                                         </td>
                                     </tr>
                                 </c:otherwise>
@@ -119,11 +119,27 @@
 <%@include file="../../include/js.jsp" %>
 <script src="/static/plugins/treegrid/js/jquery.treegrid.min.js"></script>
 <script src="/static/plugins/treegrid/js/jquery.treegrid.bootstrap3.js"></script>
+<script src="/static/plugins/layer/layer.js"></script>
 <script>
     $(function () {
         $('.tree').treegrid();
 
-
+        $(".delLink").click(function () {
+            var id = $(this).attr("rel");
+            layer.confirm("确定要删除吗?", function (index) {
+                layer.close(index);
+                $.get("/manage/permission/" + id + "/del").done(function (result) {
+                    if (result.status == "success") {
+                        layer.msg("删除成功");
+                    } else {
+                        layer.msg(result.message);
+                    }
+                    history.go(0);
+                }).error(function () {
+                    layer.msg("服务器忙,请稍后再试");
+                });
+            });
+        });
     });
 </script>
 

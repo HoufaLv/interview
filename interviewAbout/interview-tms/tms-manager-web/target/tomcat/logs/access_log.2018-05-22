@@ -1,2 +1,0 @@
-0:0:0:0:0:0:0:1 - - [22/May/2018:23:45:40 +0800] "GET /manage/permission HTTP/1.1" 200 9330 http-bio-8081-exec-1 1777
-0:0:0:0:0:0:0:1 - - [22/May/2018:23:45:45 +0800] "GET /manage/roles HTTP/1.1" 200 7220 http-bio-8081-exec-2 476

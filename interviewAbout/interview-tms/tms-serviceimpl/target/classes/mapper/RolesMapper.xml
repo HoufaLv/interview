@@ -148,6 +148,38 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <select id="selectAllRolesWithPermission" resultMap="rolesWithPermission">
+      SELECT
+        roles.*, permission.id AS permissionId,
+        permission.permission_name AS permissionName,
+        permission.permission_code AS permissionCode,
+        permission.permission_type AS permissionType,
+        permission.create_time AS permissionCreateTime,
+        permission.update_time AS permissionUpdateTime,
+        permission.permission_url AS permissionUrl,
+        permission.parent_id as parentId
+      FROM
+          roles
+      LEFT JOIN roles_permission ON roles.id = roles_permission.t_roles_id
+      LEFT JOIN permission ON roles_permission.t_permission_id = permission.id
+      ORDER BY
+          roles.id DESC
+  </select>
+  <!--返回的类型,已经继承BaseResultMap之后,就不需要再封装BaseResultMap中的东西了,只需要封装额外的属性-->
+  <resultMap id="rolesWithPermission" type="com.iw.tms.entity.Roles" extends="BaseResultMap">
+    <collection property="permissionList" ofType="com.iw.tms.entity.Permission">
+      <id property="id" column="permissionId"/>
+      <result property="permissionName" column="permissionName"/>
+      <result property="permissionCode" column="permissionCode"/>
+      <result property="permissionType" column="permissionType"/>
+      <result property="createTime" column="permissionCreateTime"/>
+      <result property="updateTime" column="permissionUpdateTime"/>
+      <result property="permissionUrl" column="permissionUrl"/>
+      <result property="parentId" column="parentId"/>
+    </collection>
+  </resultMap>
+
   <update id="updateByExampleSelective" parameterType="map">
     update roles
     <set>

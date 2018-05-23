@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * 返回ajax 结果对象
  * @author Lvhoufa
  */
-@JsonInclude
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseBean {
     //@JsonInclude(Include.NON_NULL) 这个注解主要用来解决返回前端数据为null 的情况
     //实体类与json互转的时候 属性值为null的不参与序列化
