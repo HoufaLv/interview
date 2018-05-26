@@ -1,9 +1,6 @@
 package com.iw.tms.service.impl;
 
-import com.iw.tms.entity.Account;
-import com.iw.tms.entity.AccountExample;
-import com.iw.tms.entity.AccountLoginLog;
-import com.iw.tms.entity.AccountRolesKey;
+import com.iw.tms.entity.*;
 import com.iw.tms.exception.ServiceException;
 import com.iw.tms.mapper.AccountLoginLogMapper;
 import com.iw.tms.mapper.AccountMapper;
@@ -134,5 +131,39 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account selectByAccountId(Integer id) {
         return accountMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 更新账户信息
+     * 事务
+     * @param account
+     * @param rolesIds
+     */
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public void updateAccount(Account account, Integer[] rolesIds) {
+        //添加更新时间等信息
+        account.setUpdateTime(new Date());
+        accountMapper.updateByPrimaryKeySelective(account);
+
+        //删除原有的账号--角色关系
+        //根据账号id 查出来账号和角色的对应关系,然后删除
+        AccountRolesExample accountRolesExample = new AccountRolesExample();
+        accountRolesExample.createCriteria().andTAccountIdEqualTo(account.getId());
+
+        accountRolesMapper.deleteByExample(accountRolesExample);
+
+        //新增账号--角色关系
+        //如果传过来了角色id,则更新
+        if (rolesIds!=null){
+            for (Integer id : rolesIds) {
+                AccountRolesKey accountRolesKey = new AccountRolesKey();
+                accountRolesKey.settAccountId(account.getId());
+                accountRolesKey.settRolesId(id);
+                accountRolesMapper.insertSelective(accountRolesKey);
+            }
+        }
+
+        logger.info("修改账号:{}",account);
     }
 }

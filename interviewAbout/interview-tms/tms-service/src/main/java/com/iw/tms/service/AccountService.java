@@ -35,4 +35,11 @@ public interface AccountService {
      * @return
      */
     Account selectByAccountId(Integer id);
+
+    /**
+     * 更新账户信息
+     * @param account
+     * @param rolesIds
+     */
+    void updateAccount(Account account, Integer[] rolesIds);
 }

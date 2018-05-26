@@ -55,4 +55,11 @@ public interface RolesPermissionService {
      * @return
      */
     List<Roles> selectAllRoles();
+
+    /**
+     * 查询当前账户对应的角色信息
+     * @param id
+     * @return
+     */
+    List<Roles> selectRolesByAccountId(Integer id);
 }

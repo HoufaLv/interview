@@ -166,7 +166,13 @@
       ORDER BY
           roles.id DESC
   </select>
-  <!--返回的类型,已经继承BaseResultMap之后,就不需要再封装BaseResultMap中的东西了,只需要封装额外的属性-->
+  <!--根据账号查询对应的角色信息,查询角色id in()-->
+    <select id="selectRolesByAccountId" resultType="com.iw.tms.entity.Roles">
+    select * from  roles  where id in (
+      select t_roles_id from account_roles where t_account_id = #{accountid}
+    )
+    </select>
+    <!--返回的类型,已经继承BaseResultMap之后,就不需要再封装BaseResultMap中的东西了,只需要封装额外的属性-->
   <resultMap id="rolesWithPermission" type="com.iw.tms.entity.Roles" extends="BaseResultMap">
     <collection property="permissionList" ofType="com.iw.tms.entity.Permission">
       <id property="id" column="permissionId"/>

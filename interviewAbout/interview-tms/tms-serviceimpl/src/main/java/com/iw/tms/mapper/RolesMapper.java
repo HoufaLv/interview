@@ -29,4 +29,11 @@ public interface RolesMapper {
     int updateByPrimaryKey(Roles record);
 
     List<Roles> selectAllRolesWithPermission();
+
+    /**
+     * 根据账号查询对应的角色信息
+     * @param id
+     * @return
+     */
+    List<Roles> selectRolesByAccountId(Integer id);
 }

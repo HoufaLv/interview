@@ -197,4 +197,15 @@ public class RolesPermissionServiceIMpl implements RolesPermissionService {
     public List<Roles> selectAllRoles() {
         return rolesMapper.selectByExample(new RolesExample());
     }
+
+    /**
+     * 查询当前账户对应的角色信息
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Roles> selectRolesByAccountId(Integer id) {
+        return rolesMapper.selectRolesByAccountId(id);
+    }
 }

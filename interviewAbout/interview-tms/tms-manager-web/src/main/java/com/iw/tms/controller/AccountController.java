@@ -93,20 +93,44 @@ public class AccountController {
     }
 
     /**
-     * 根据id 修改账户信息
-     * 先检查账号是否存在
+     * 跳转到修改页面,将前端所需要的数据传过去
      * @param id
      * @return
      */
     @GetMapping("/{id:\\d+}/edit")
-    public String updateAccount(@PathVariable Integer id){
+    public String updateAccount(@PathVariable Integer id,
+                                Model model){
+        //先检查账号是否存在
         Account account = accountService.selectByAccountId(id);
-        if (account!=null){
+        if (account==null){
             throw new ServiceException("账号不存在");
         }
 
+        //将所有的角色传到前端页面
+        List<Roles> rolesList = rolesPermissionService.listRoles();
+        //将当前账号对应的角色信息查出来传到后台
+        List<Roles> accountRolesList = rolesPermissionService.selectRolesByAccountId(id);
 
-        return null;
+        model.addAttribute("rolesList",rolesList);
+        model.addAttribute("accountRolesList",accountRolesList);
+        model.addAttribute("account",account);
+
+        return "manage/account/edit";
     }
 
+    /**
+     * 修改账户
+     * @param account
+     * @param rolesIds
+     * @param redirectAttributes
+     * @return
+     */
+    @PostMapping("/{id:\\d+}/edit")
+    public String updateAccount(Account account,
+                                Integer[] rolesIds,
+                                RedirectAttributes redirectAttributes){
+        accountService.updateAccount(account,rolesIds);
+        redirectAttributes.addFlashAttribute("message","账号修改成功");
+        return "redirect:/manage/account/";
+    }
 }
