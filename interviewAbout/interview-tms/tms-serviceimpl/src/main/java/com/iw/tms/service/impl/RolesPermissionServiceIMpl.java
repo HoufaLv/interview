@@ -177,4 +177,24 @@ public class RolesPermissionServiceIMpl implements RolesPermissionService {
     public List<Roles> selectRolesWithPermission() {
         return rolesMapper.selectAllRolesWithPermission();
     }
+
+    /**
+     * 查询所有角色信息
+     *
+     * @return
+     */
+    @Override
+    public List<Roles> listRoles() {
+        return rolesMapper.selectByExample(new RolesExample());
+    }
+
+    /**
+     * 查询所有角色
+     *
+     * @return
+     */
+    @Override
+    public List<Roles> selectAllRoles() {
+        return rolesMapper.selectByExample(new RolesExample());
+    }
 }

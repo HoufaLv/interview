@@ -2,6 +2,8 @@ package com.iw.tms.mapper;
 
 import com.iw.tms.entity.Account;
 import com.iw.tms.entity.AccountExample;
+
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -29,4 +31,6 @@ public interface AccountMapper {
     int updateByPrimaryKeySelective(Account record);
 
     int updateByPrimaryKey(Account record);
+
+    List<Account> selectAllAccountWithRolesByQueryParam(HashMap<String, Object> requestParam);
 }

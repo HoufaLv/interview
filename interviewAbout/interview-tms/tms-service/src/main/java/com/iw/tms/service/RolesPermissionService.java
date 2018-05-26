@@ -44,4 +44,15 @@ public interface RolesPermissionService {
      */
     List<Roles> selectRolesWithPermission();
 
+    /**
+     * 查询所有角色信息
+     * @return
+     */
+    List<Roles> listRoles();
+
+    /**
+     * 查询所有角色
+     * @return
+     */
+    List<Roles> selectAllRoles();
 }

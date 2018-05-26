@@ -2,6 +2,7 @@ package com.iw.tms.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 
@@ -34,6 +35,16 @@ public class Account implements Serializable {
     private Date updateTime;
 
     private String accountState;
+
+    private List<Roles> rolesList;
+
+    public List<Roles> getRolesList() {
+        return rolesList;
+    }
+
+    public void setRolesList(List<Roles> rolesList) {
+        this.rolesList = rolesList;
+    }
 
     private static final long serialVersionUID = 1L;
 
