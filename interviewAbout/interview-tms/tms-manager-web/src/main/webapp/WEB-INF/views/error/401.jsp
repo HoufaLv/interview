@@ -9,6 +9,6 @@
     <title>401 page</title>
 </head>
 <body>
-    <h3>你没有访问该资源的权限！</h3>
+    <h3>未授权！</h3>
 </body>
 </html>

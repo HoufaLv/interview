@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--1. 配置SecurityManager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="realm" ref="myShiroReaml"/>
+    </bean>
+
+    <!--2.配置缓存管理器（可选）-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!--指定ehcache的配置文件-->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
+
+    <!--3. 配置自定以的Realm-->
+    <bean id="myShiroReaml" class="com.iw.tms.shiro.ShiroRealm"/>
+
+    <!--4. 配置生命周期处理器：自动调用shiro在Spring容器中配置的init(),destory()等生命周期方法-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--5. 开启基于注解的shiro角色以及权限判断 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <!--6. 配置ShiroFilter id必须和web.xml中的filter节点的filter-name相同-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--配置登录的URL-->
+        <property name="loginUrl" value="/"/>
+        <!--登录成功后的URL-->
+        <property name="successUrl" value="/home"/>
+        <!--访问没有权限的资源跳转的URL-->
+        <property name="unauthorizedUrl" value="/401"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /favicon.ico = anon
+                /static/** = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+
+</beans>

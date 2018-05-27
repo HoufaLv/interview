@@ -29,7 +29,9 @@ public class AccountController {
     // TODO: 2018/5/24 0024 完成账号显示,动态搜索功能
     // TODO: 2018/5/24 0024 动态搜索,根据[账号或手机号码] 角色分类
     // TODO: 2018/5/25 0025 完成账号修改功能
+    // TODO: 2018/5/27 0027 spring整合 shiro 框架,完成登陆验证
 
+    
     @Autowired
     private RolesPermissionService rolesPermissionService;
     @Autowired
