@@ -1,2 +1,3 @@
+com\iw\tms\service\TicketStoreService.class
 com\iw\tms\service\RolesPermissionService.class
 com\iw\tms\service\AccountService.class

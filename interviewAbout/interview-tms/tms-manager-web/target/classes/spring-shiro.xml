@@ -28,6 +28,7 @@
     </bean>
 
     <!--3. 配置自定以的Realm-->
+    <!--Realm 就是域,数据源,在realm中有判断是否登陆,是否有权限的方法-->
     <bean id="myShiroReaml" class="com.iw.tms.shiro.ShiroRealm"/>
 
     <!--4. 配置生命周期处理器：自动调用shiro在Spring容器中配置的init(),destory()等生命周期方法-->
@@ -72,6 +73,5 @@
     </bean>
 
     <!-- !!!!!!!!!!!!动态权限需要在ShiroFilterFacoryBean中注释掉filterChainDefinitions 节点,改为 filterChainDefinitionMap ,引用自己写的CustomerFilterChainDefinitaion-->
-
 
 </beans>

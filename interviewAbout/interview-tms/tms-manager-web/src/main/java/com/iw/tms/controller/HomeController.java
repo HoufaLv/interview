@@ -55,8 +55,10 @@ public class HomeController {
                         String rememberMe,
                         RedirectAttributes redirectAttributes) {
 
-        //改用动态权限,使用shiro框架做权限验证
+        //获取subject 对象
         Subject subject = SecurityUtils.getSubject();
+
+        //获取请求的ipAddress,ipV6 默认都是0
         String remoteAddr = httpServletRequest.getRemoteAddr();
 
         //创建UsernamePasswordToken

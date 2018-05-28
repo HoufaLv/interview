@@ -109,7 +109,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=VARCHAR}, #{storeState,jdbcType=VARCHAR}, 
       #{ticketStoreId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.iw.tms.entity.StoreAccount">
+  <insert id="insertSelective" parameterType="com.iw.tms.entity.StoreAccount" useGeneratedKeys="true" keyProperty="id">
     insert into store_account
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

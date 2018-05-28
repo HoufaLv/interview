@@ -113,6 +113,13 @@
             <version>2.9.9</version>
         </dependency>
 
+        <!--七牛-->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.2.8</version>
+        </dependency>
+
         <!--dubbo-->
         <dependency>
             <groupId>com.alibaba</groupId>
