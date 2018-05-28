@@ -172,7 +172,22 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+    <select id="findAllPermissionByRolesId" resultType="com.iw.tms.entity.Permission">
+        SELECT
+            *
+        FROM
+            permission
+        WHERE
+            id IN (
+                SELECT
+                    t_permission_id
+                FROM
+                    roles_permission
+                WHERE
+                    t_roles_id = #{rolesId}
+            )
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
     update permission
     <set>
       <if test="record.id != null">

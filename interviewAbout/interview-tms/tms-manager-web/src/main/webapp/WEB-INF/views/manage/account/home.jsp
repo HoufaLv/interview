@@ -32,6 +32,9 @@
 
         <!-- Main content -->
         <section class="content">
+            <c:if test="${not empty message}">
+                <p class="login-box-msg text-danger">${message}</p>
+            </c:if>
             <div class="box no-border">
                 <div class="box-body">
                     <form class="form-inline">
@@ -50,6 +53,7 @@
                 <div class="box-header">
                     <div class="box-tools">
                         <a href="/manage/account/new" class="btn btn-success btn-sm">
+
                             <i class="fa fa-plus"></i> 新增账号
                         </a>
                     </div>

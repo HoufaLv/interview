@@ -3,11 +3,9 @@ package com.iw.tms.controller;
 import com.google.common.collect.Maps;
 import com.iw.tms.controller.exception.ServiceException;
 import com.iw.tms.entity.Account;
-import com.iw.tms.entity.Permission;
 import com.iw.tms.entity.Roles;
 import com.iw.tms.service.AccountService;
 import com.iw.tms.service.RolesPermissionService;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +32,7 @@ public class AccountController {
     // TODO: 2018/5/27 0027 完成shiro 登出
     // TODO: 2018/5/27 0027 完成shiro 记住我,跳转登陆前页面
     // TODO: 2018/5/27 0027 完成shiro 动态权限加载
+
 
     @Autowired
     private RolesPermissionService rolesPermissionService;

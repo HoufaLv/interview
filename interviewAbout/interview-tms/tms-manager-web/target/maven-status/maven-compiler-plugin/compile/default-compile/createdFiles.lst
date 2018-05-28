@@ -1,5 +1,6 @@
 com\iw\tms\controller\HomeController.class
 com\iw\tms\shiro\ShiroRealm.class
+com\iw\tms\shiro\CustomerFilterChainDefinition.class
 com\iw\tms\controller\RolesController.class
 com\iw\tms\controller\TicketStoreController.class
 com\iw\tms\controller\PermissionController.class

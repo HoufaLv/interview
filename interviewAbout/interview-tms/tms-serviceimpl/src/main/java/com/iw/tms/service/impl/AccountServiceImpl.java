@@ -102,12 +102,14 @@ public class AccountServiceImpl implements AccountService {
         Account currAccount = accountMapper.selectByPrimaryKey(account.getId());
 
         //处理关联关系
-        for (Integer id : rolesId) {
-            AccountRolesKey accountRolesKey = new AccountRolesKey();
-            accountRolesKey.settAccountId(currAccount.getId());
-            accountRolesKey.settRolesId(id);
-            accountRolesMapper.insertSelective(accountRolesKey);
-            logger.info("添加账户和角色的对应关系");
+        if (rolesId!=null){
+            for (Integer id : rolesId) {
+                AccountRolesKey accountRolesKey = new AccountRolesKey();
+                accountRolesKey.settAccountId(currAccount.getId());
+                accountRolesKey.settRolesId(id);
+                accountRolesMapper.insertSelective(accountRolesKey);
+                logger.info("添加账户和角色的对应关系");
+            }
         }
     }
 
@@ -165,5 +167,34 @@ public class AccountServiceImpl implements AccountService {
         }
 
         logger.info("修改账号:{}",account);
+    }
+
+    /**
+     * 保存登陆日志
+     *
+     * @param accountLoginLog
+     */
+    @Override
+    public void saveAccountLoginLog(AccountLoginLog accountLoginLog) {
+
+        accountLoginLogMapper.insertSelective(accountLoginLog);
+    }
+
+    /**
+     * 根据手机号查询账户
+     *
+     * @param userMobile
+     * @return
+     */
+    @Override
+    public Account selectByMobile(String userMobile) {
+        AccountExample accountExample = new AccountExample();
+        accountExample.createCriteria().andAccountMobileEqualTo(userMobile);
+
+        List<Account> accounts = accountMapper.selectByExample(accountExample);
+        if (accounts!=null && !accounts.isEmpty()){
+            return accounts.get(0);
+        }
+        return null;
     }
 }

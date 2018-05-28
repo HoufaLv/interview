@@ -208,4 +208,15 @@ public class RolesPermissionServiceIMpl implements RolesPermissionService {
     public List<Roles> selectRolesByAccountId(Integer id) {
         return rolesMapper.selectRolesByAccountId(id);
     }
+
+    /**
+     * 根据角色的id 查询对应角色的所有权限
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Permission> findAllPermissionByRolesId(Integer id) {
+        return permissionMapper.findAllPermissionByRolesId(id);
+    }
 }

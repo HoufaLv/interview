@@ -15,7 +15,10 @@
                 <li class="${param.menu == 'manage_account' ? 'active' : ''}"><a href="/manage/account"><i class="fa fa-circle-o"></i> <span>账号管理</span></a></li>
 
             <li class="${param.menu == 'manage_roles' ? 'active' : ''}"><a href="/manage/roles"><i class="fa fa-circle-o"></i> <span>角色管理</span></a></li>
+
+            <shiro:hasPermission name="permission:home">
             <li class="${param.menu == 'manage_permission' ? 'active' : ''}"><a href="/manage/permission"><i class="fa fa-circle-o"></i> <span>权限管理</span></a></li>
+            </shiro:hasPermission>
 
             <%--<!-- 普通菜单 -->
             <li class="treeview">

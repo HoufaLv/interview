@@ -1,6 +1,7 @@
 package com.iw.tms.service;
 
 import com.iw.tms.entity.Account;
+import com.iw.tms.entity.AccountLoginLog;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,4 +43,17 @@ public interface AccountService {
      * @param rolesIds
      */
     void updateAccount(Account account, Integer[] rolesIds);
+
+    /**
+     * 保存登陆日志
+     * @param accountLoginLog
+     */
+    void saveAccountLoginLog(AccountLoginLog accountLoginLog);
+
+    /**
+     * 根据手机号查询账户
+     * @param userMobile
+     * @return
+     */
+    Account selectByMobile(String userMobile);
 }

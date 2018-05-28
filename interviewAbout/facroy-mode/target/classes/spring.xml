@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 将Class Apple 放入spring 容器中去 -->
+	<bean id="apple" class="com.iw.Apple"></bean>
+	
+	<bean id="appleFactory" class="com.iw.AppleFactory"></bean>
+</beans>

@@ -29,4 +29,11 @@
         <property name="maxUploadSize" value="10000000"/>
     </bean>
 
+
+    <!--5. 开启基于注解的shiro角色以及权限判断,这个要配置在spring MVC的配置文件中 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
 </beans>
