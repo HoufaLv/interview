@@ -11,6 +11,7 @@ com\iw\crm\entity\ChanceRecordExample$Criterion.class
 com\iw\crm\entity\DeptExample$Criterion.class
 com\iw\crm\entity\DiskExample$Criterion.class
 com\iw\crm\entity\DeptExample.class
+com\iw\crm\exception\ServiceException.class
 com\iw\crm\entity\CustomerExample$Criteria.class
 com\iw\crm\entity\DeptExample$Criteria.class
 com\iw\crm\entity\ChanceRecordExample.class
@@ -34,6 +35,7 @@ com\iw\crm\entity\CustomerExample$Criterion.class
 com\iw\crm\entity\CustomerExample$GeneratedCriteria.class
 com\iw\crm\entity\DiskExample$GeneratedCriteria.class
 com\iw\crm\entity\DiskExample$Criteria.class
+com\iw\crm\exception\AuthenticationException.class
 com\iw\crm\entity\Dept.class
 com\iw\crm\entity\DeptExample$GeneratedCriteria.class
 com\iw\crm\entity\AccountExample.class

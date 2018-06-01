@@ -25,10 +25,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                Blank page
-                <small>it all starts here</small>
-            </h1>
+            <h1>[ <shiro:principal property="name"></shiro:principal> ] 您好</h1>
         </section>
 
         <!-- Main content -->

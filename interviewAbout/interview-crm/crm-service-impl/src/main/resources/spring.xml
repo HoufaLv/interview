@@ -4,7 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <!--自动扫描,排除Controller-->
+    <!--自动扫描,排除Controller,被扫描的类将会放到spring容器中-->
+    <!--因为将mapper文件放入了service-impl模块中,所以mybatis 相关的配置也放到这个配置文件中-->
     <context:component-scan base-package="com.iw">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>

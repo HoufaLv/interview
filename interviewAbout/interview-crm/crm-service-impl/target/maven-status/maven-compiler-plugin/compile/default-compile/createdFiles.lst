@@ -5,4 +5,6 @@ com\iw\crm\mapper\AccountDeptMapper.class
 com\iw\crm\mapper\TaskMapper.class
 com\iw\crm\mapper\DiskMapper.class
 com\iw\crm\mapper\ChanceRecordMapper.class
+com\iw\crm\service\impl\DeptServiceImpl.class
 com\iw\crm\mapper\CustomerMapper.class
+com\iw\crm\service\impl\AccountServiceImpl.class

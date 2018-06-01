@@ -31,9 +31,10 @@
                         <!-- User image -->
                         <li class="user-header">
                             <img src="/static/dist/img/default-avatar.png" class="img-circle" alt="User Image">
-
                             <p>
-
+                                <small><shiro:principal property="name"></shiro:principal></small>
+                            </p>
+                            <p>
                                 <small>海外事业部</small>
                             </p>
                         </li>

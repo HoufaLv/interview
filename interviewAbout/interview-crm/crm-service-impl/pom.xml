@@ -13,17 +13,14 @@
     <artifactId>crm-service-impl</artifactId>
     <packaging>jar</packaging>
     <dependencies>
+        <!--依赖crm-service,service依赖了entity,所以也会自动去依赖entity -->
         <dependency>
             <groupId>com.iw.crm</groupId>
             <artifactId>crm-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.iw.crm</groupId>
-            <artifactId>crm-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
 
+        <!--mybatis相关-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -36,6 +33,13 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
         </dependency>
+        <!--分页-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -75,4 +79,18 @@
             <version>1.7.25</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!--spring 字符集过滤器-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -21,7 +22,22 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--SpringMVC中央控制器-->
+    <!--Shiro 过滤器-->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--SpringMVC中央前端控制器,也就是搞@Controller 方面的-->
     <servlet>
         <servlet-name>mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -31,9 +47,17 @@
         <servlet-name>mvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
+    
+    <!--web容器启动的时候去加载spring 容器,这样放入spring容器的类才可以使用-->
+    <!--spring容器相关的,搞得是系统层面的东西,比如说放入spring容器的东西是否可以使用-->
+    <!--有状态的类不能放到spring 容器中,比如说entity,service interface,web有很多要使用的组件,比如说Controller,AOP,等,所以要放到sprin容器,要在业务层也使用spring组件,所以也要放入spring容器中-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:spring.xml</param-value>
+        <param-value>classpath*:spring*.xml</param-value>
     </context-param>
+
+    
 </web-app>
