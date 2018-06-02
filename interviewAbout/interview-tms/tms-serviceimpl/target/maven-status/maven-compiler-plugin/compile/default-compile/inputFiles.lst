@@ -4,11 +4,13 @@ C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\t
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\TicketOutRecordMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\StoreLoginLogMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\TicketInRecordMapper.java
+C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\service\impl\TicketStoreServiceImpl.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\CustomerMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\RolesMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\PermissionMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\AccountRolesMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\TicketOrderMapper.java
+C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\fileStore\QiniuStore.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\AccountLoginLogMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\StoreAccountMapper.java
 C:\interview\interviewAbout\interview-tms\tms-serviceimpl\src\main\java\com\iw\tms\mapper\TicketMapper.java

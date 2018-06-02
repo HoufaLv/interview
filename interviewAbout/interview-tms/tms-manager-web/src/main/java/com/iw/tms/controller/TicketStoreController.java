@@ -2,16 +2,15 @@ package com.iw.tms.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Maps;
+import com.iw.tms.controller.exception.ServiceException;
+import com.iw.tms.entity.StoreAccount;
 import com.iw.tms.entity.TicketStore;
 import com.iw.tms.fileStore.QiniuStore;
 import com.iw.tms.service.TicketStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Map;
@@ -24,7 +23,10 @@ public class TicketStoreController {
     // TODO: 2018/5/28 0028 完成新增售票点功能
     // TODO: 2018/5/28 0028 完成售票点首页显示功能
     // TODO: 2018/5/28 0028 完成售票点动态搜索功能
-    // TODO: 2018/5/28 0028 完成 
+    // TODO: 2018/5/28 0028 完成售票点编辑功能
+    // TODO: 2018/5/29 0029 完成售票点查看功能,调用7牛的远程服务
+    // TODO: 2018/5/29 0029 完成售票点编辑功能
+
     
     @Autowired
     private TicketStoreService ticketStoreService;
@@ -56,6 +58,11 @@ public class TicketStoreController {
         return "store/home";
     }
 
+    /**
+     * 新增售票点
+     * @param model
+     * @return
+     */
     @GetMapping("/new")
     public String insertTicketStore(Model model){
         String uploadToken = qiniuStore.getUploadToken();
@@ -63,11 +70,70 @@ public class TicketStoreController {
         return "store/new";
     }
 
+    /**
+     * 添加售票点
+     * @param ticketStore
+     * @param redirectAttributes
+     * @return
+     */
     @PostMapping("/new")
     public String insertTicketStore(TicketStore ticketStore, RedirectAttributes redirectAttributes){
         ticketStoreService.insertTicketStore(ticketStore);
         redirectAttributes.addFlashAttribute("message","新增成功");
 
+        return "redirect:/ticketstore";
+    }
+
+    /**
+     * 查看售票点信息
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/{id:\\d+}")
+    public String showTicketStore(@PathVariable Integer id,
+                                  Model model){
+        //如果售票点存在的话
+        TicketStore ticketStore = ticketStoreService.selectByStoreAccountId(id);
+
+        if (ticketStore==null){
+            throw new ServiceException("账号不存在");
+        }
+
+        //根据售票点id 查找对应的售票点账号,传到前端去
+        StoreAccount storeAccount = ticketStoreService.selectStoreAccountByTicketStoreId(ticketStore.getId());
+        model.addAttribute("storeAccount",storeAccount);
+        model.addAttribute("ticketStore",ticketStore);
+        return "store/info";
+    }
+
+    /**
+     * 跳转到修改账户首页,携带数据
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/{id:\\d+}/edit")
+    public String updateTicketStore(@PathVariable Integer id,
+                                    Model model){
+        TicketStore ticketStore = ticketStoreService.selectTicketStoreById(id);
+        if (ticketStore==null){
+            throw new ServiceException("账号不存在");
+        }
+        //获取七牛上传的Token
+        String uploadToken = qiniuStore.getUploadToken();
+
+        model.addAttribute("uploadToken",uploadToken);
+        model.addAttribute("ticketStore",ticketStore);
+        return "store/edit";
+    }
+
+    @PostMapping("/{id:\\d+}/edit")
+    public String updateTicketStore(TicketStore ticketStore,
+                                    RedirectAttributes redirectAttributes){
+
+        ticketStoreService.updateTicketStore(ticketStore);
+        redirectAttributes.addFlashAttribute("message","修改成功");
         return "redirect:/ticketstore";
     }
 }

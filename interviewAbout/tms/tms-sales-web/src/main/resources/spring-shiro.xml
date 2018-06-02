@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 自动扫描,只扫描带有 @Controller 的类,以及 @ControllerAdvice 的类 -->
+    <context:component-scan base-package="com.ksit">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+    <!--region cookie配置相关,securityManager 需要引用该节点-->
+
+   <!-- <bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <property name="maxAge" value="604800"/>
+        <property name="httpOnly" value="true"/>
+        &lt;!&ndash;这个可能跟前端传过来得有关系,前端input 框中name 叫啥,这个叫啥&ndash;&gt;
+        <property name="name" value="rememberMe"/>
+    </bean>
+
+    <bean id="cookieRememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="simpleCookie"/>
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+     </bean>-->
+    <!--endregion-->
+
+    <!--1. 配置SecurityManager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="realm" ref="ShiroRealm"/>
+        <!--<property name="rememberMeManager" ref="cookieRememberMeManager"/>-->
+    </bean>
+
+    <!--2.配置缓存管理器（可选）-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!--指定ehcache的配置文件-->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
+
+    <!--3. 配置自定以的Realm-->
+    <bean id="ShiroRealm" class="com.ksit.tms.shiro.ShiroRealm"/>
+
+    <!--4. 配置生命周期处理器：自动调用shiro在Spring容器中配置的init(),destory()等生命周期方法-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--5. 开启基于注解的shiro角色以及权限判断 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+
+    <!--6. 配置ShiroFilter id必须和web.xml中的filter节点的filter-name相同-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--配置登录的URL,这个loginUrl 是在Controller 中的getMapping 的映射对应的url-->
+        <property name="loginUrl" value="/"/>
+        <!--登录成功后的URL-->
+        <!-- 这几个路径需要和Controller 中的映射保持一致 -->
+        <property name="successUrl" value="/home"/>
+        <!--访问没有权限的资源跳转的URL-->
+        <property name="unauthorizedUrl" value="/401"/>
+        <property name="filterChainDefinitions">
+            <!--  静态资源-->
+            <!-- /static 下的所有资源放行 -->
+            <!-- /** 除了/static 下的文件,剩下所有的文件都需要过滤 -->
+            <!-- anon: 不登录也可以访问 -->
+            <!-- authc: 被认证才能访问 -->
+            <!-- user: 被认证或者被记住,都可以访问 -->
+            <!-- 添加自定义得权限 -->
+            <value>
+                /favicon.ico = anon
+                /static/** = anon
+                /logout = logout
+                /manage/account/*/update = perms[account:update]
+                /** = user
+            </value>
+        </property>
+    </bean>
+
+
+
+</beans>

@@ -182,8 +182,19 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.iw.tms.entity.TicketExample" resultType="java.lang.Long">
-    select count(*) from ticket
+
+    <!--批量添加年票,添加id,ticket_num,ticket_in_time,ticket_state,create_time-->
+    <insert id="batchInsert">
+      insert into ticket (id,ticket_num,ticket_in_time,ticket_state,create_time)
+      values
+      <foreach collection="ticketList" item="ticket" separator=",">
+        (#{ticket.ticketNum},#{ticket.ticketInTime},#{ticket.ticketState},#{createTime})
+      </foreach>
+    </insert>
+
+
+    <select id="countByExample" parameterType="com.iw.tms.entity.TicketExample" resultType="java.lang.Long">
+    select count(*) from ticket (id,)
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

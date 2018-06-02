@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms-commons/tms-commons.iml" filepath="$PROJECT_DIR$/tms-commons/tms-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms-finance-web/tms-finance-web.iml" filepath="$PROJECT_DIR$/tms-finance-web/tms-finance-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms-manager-web/tms-manager-web.iml" filepath="$PROJECT_DIR$/tms-manager-web/tms-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms-sales-web/tms-sales-web.iml" filepath="$PROJECT_DIR$/tms-sales-web/tms-sales-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms-service/tms-service.iml" filepath="$PROJECT_DIR$/tms-service/tms-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tms-service-impl/tms-service-impl.iml" filepath="$PROJECT_DIR$/tms-service-impl/tms-service-impl.iml" />
+    </modules>
+  </component>
+</project>

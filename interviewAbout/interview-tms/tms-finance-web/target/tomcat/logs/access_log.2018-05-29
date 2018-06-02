@@ -1,0 +1,17 @@
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/css/material-design-iconic-font/css/material-design-iconic-font.min.css HTTP/1.1" 404 1131 http-bio-8080-exec-1 64
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/css/app.min.1.css HTTP/1.1" 404 1023 http-bio-8080-exec-2 2
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/jquery/dist/jquery.min.js HTTP/1.1" 404 1079 http-bio-8080-exec-3 2
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/log.js HTTP/1.1" 404 1007 http-bio-8080-exec-4 3
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular/angular.min.js HTTP/1.1" 404 1073 http-bio-8080-exec-5 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular-resource/angular-resource.min.js HTTP/1.1" 404 1109 http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular-animate/angular-animate.min.js HTTP/1.1" 404 1105 http-bio-8080-exec-7 2
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular-ui-router/release/angular-ui-router.min.js HTTP/1.1" 404 1129 http-bio-8080-exec-8 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular-loading-bar/src/loading-bar.js HTTP/1.1" 404 1105 http-bio-8080-exec-9 2
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/oclazyload/dist/ocLazyLoad.min.js HTTP/1.1" 404 1095 http-bio-8080-exec-10 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js HTTP/1.1" 404 1113 http-bio-8080-exec-10 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/angular-nouislider/src/nouislider.min.js HTTP/1.1" 404 1109 http-bio-8080-exec-10 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/bower_components/ng-table/dist/ng-table.min.js HTTP/1.1" 404 1087 http-bio-8080-exec-3 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/app.js HTTP/1.1" 404 1007 http-bio-8080-exec-3 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/controllers/main.js HTTP/1.1" 404 1033 http-bio-8080-exec-3 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/controllers/ui-bootstrap.js HTTP/1.1" 404 1049 http-bio-8080-exec-3 1
+0:0:0:0:0:0:0:1 - - [29/May/2018:14:21:55 +0800] "GET /static/azraelLogin/js/modules/form.js HTTP/1.1" 404 1025 http-bio-8080-exec-3 2

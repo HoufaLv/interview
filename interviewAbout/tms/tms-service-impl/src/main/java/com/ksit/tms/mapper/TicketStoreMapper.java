@@ -1,0 +1,30 @@
+package com.ksit.tms.mapper;
+
+import com.ksit.tms.entity.TicketStore;
+import com.ksit.tms.entity.TicketStoreExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface TicketStoreMapper {
+    long countByExample(TicketStoreExample example);
+
+    int deleteByExample(TicketStoreExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(TicketStore record);
+
+    int insertSelective(TicketStore record);
+
+    List<TicketStore> selectByExample(TicketStoreExample example);
+
+    TicketStore selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") TicketStore record, @Param("example") TicketStoreExample example);
+
+    int updateByExample(@Param("record") TicketStore record, @Param("example") TicketStoreExample example);
+
+    int updateByPrimaryKeySelective(TicketStore record);
+
+    int updateByPrimaryKey(TicketStore record);
+}

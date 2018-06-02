@@ -119,7 +119,7 @@
       #{storeLongitude,jdbcType=VARCHAR}, #{storeLatitude,jdbcType=VARCHAR}, #{storeAccountId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.iw.tms.entity.TicketStore">
+  <insert id="insertSelective" parameterType="com.iw.tms.entity.TicketStore" useGeneratedKeys="true" keyProperty="id">
     insert into ticket_store
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

@@ -1,0 +1,3 @@
+com\ksit\tms\shiro\ShiroRealm.class
+com\ksit\tms\controller\HomeController.class
+com\ksit\tms\shiro\CustomerFilterChainDefinition.class

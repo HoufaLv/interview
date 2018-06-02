@@ -1,0 +1,7 @@
+com\ksit\tms\shiro\ShiroRealm.class
+com\ksit\tms\controller\PermissionController.class
+com\ksit\tms\controller\AccountController.class
+com\ksit\tms\controller\TicketStoreController.class
+com\ksit\tms\controller\HomeController.class
+com\ksit\tms\shiro\CustomerFilterChainDefinition.class
+com\ksit\tms\controller\RolesController.class

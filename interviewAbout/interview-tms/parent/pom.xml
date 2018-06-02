@@ -15,10 +15,12 @@
     <modules>
         <module>../tms-common</module>
         <module>../tms-manager-web</module>
-        <module>../tms-finance-web</module>
+        <!--<module>../tms-finance-web</module>-->
+        <module>../tms-finances-web</module>
         <module>../tms-service</module>
         <module>../tms-serviceimpl</module>
         <module>../tms-sales-web</module>
+
     </modules>
 
 

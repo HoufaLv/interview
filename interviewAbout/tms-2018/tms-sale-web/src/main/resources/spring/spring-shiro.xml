@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--0. 配置rememberMe-->
+    <bean id="rememberCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <property name="maxAge" value="604800"/>
+        <property name="httpOnly" value="true"/>
+        <property name="name" value="rememberMe"/>
+    </bean>
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="rememberCookie"/>
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+    </bean>
+
+    <!--1. 配置SecurityManager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="realm" ref="myShiroReaml"/>
+        <!--配置remember管理器-->
+        <property name="rememberMeManager" ref="rememberMeManager"/>
+    </bean>
+
+    <!--2.配置缓存管理器（可选）-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!--指定ehcache的配置文件-->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
+
+    <!--3. 配置自定以的Realm-->
+    <bean id="myShiroReaml" class="com.kaishengit.tms.shiro.ShiroRealm"/>
+
+    <!--4. 配置生命周期处理器：自动调用shiro在Spring容器中配置的init(),destory()等生命周期方法-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--5. 开启基于注解的shiro角色以及权限判断 -->
+   <!-- <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>-->
+
+    <!--6. 配置ShiroFilter id必须和web.xml中的filter节点的filter-name相同-->
+    <bean id="filterChainDefinition" class="com.kaishengit.tms.shiro.CustomerFilterChainDefinition">
+        <property name="shiroFilter" ref="shiroFilter"/>
+        <property name="filterChainDefinition">
+            <value>
+                /favicon.ico = anon
+                /static/** = anon
+                /logout = logout
+                /file/download = anon
+            </value>
+        </property>
+    </bean>
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--配置登录的URL-->
+        <property name="loginUrl" value="/"/>
+        <!--登录成功后的URL-->
+        <property name="successUrl" value="/home"/>
+        <!--访问没有权限的资源跳转的URL-->
+        <property name="unauthorizedUrl" value="/401"/>
+    </bean>
+
+
+
+
+
+
+</beans>
