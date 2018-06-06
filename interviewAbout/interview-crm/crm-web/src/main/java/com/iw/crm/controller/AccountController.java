@@ -3,6 +3,7 @@ package com.iw.crm.controller;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
+import com.iw.crm.entity.Account;
 import com.iw.crm.entity.Dept;
 import com.iw.crm.service.AccountService;
 import com.iw.crm.service.DeptService;
@@ -53,5 +54,23 @@ public class AccountController {
         }));
 
         return zTreeNodeList;
+    }
+
+
+    /**
+     * 添加账户
+     * @param account
+     * @param deptId
+     * @return
+     */
+    @PostMapping("/new")
+    public String insertAccount(Account account,Integer[] deptId){
+        try {
+            accountService.insertAccount(account,deptId);
+            return "";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

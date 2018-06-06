@@ -83,11 +83,11 @@
                     <form id="addAccountForm">
                         <div class="form-group">
                             <label>姓名</label>
-                            <input type="text" class="form-control" name="userName">
+                            <input type="text" class="form-control" name="name">
                         </div>
                         <div class="form-group">
                             <label>密码（默认密码123123）</label>
-                            <input type="password" class="form-control" name="password" value="123123">
+                            <input type="password" class="form-control" name="password" value="000000">
                         </div>
                         <div class="form-group">
                             <label>手机号码</label>

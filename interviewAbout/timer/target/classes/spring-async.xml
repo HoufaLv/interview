@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="com.iw"/>
+
+    <!--定义调度者-->
+    <task:scheduler id="scheduler" pool-size="10"/>
+
+    <!--开启基于注解的任务调度,同时可以执行发生异常之后使用哪个异常处理程序-->
+    <task:annotation-driven scheduler="scheduler" exception-handler="myAsyncExceptionHandler"/>
+
+
+
+</beans>
